@@ -25,12 +25,10 @@ async function carregarClientes() {
   lista.innerHTML = '';
   const clientes = await service.listarTodos();
 
-  // Usando map() para gerar elementos HTML
   const elementos = clientes.map(cliente =>
     criarElementoCliente(cliente, excluirCliente)
   );
 
-  // Usando reduce() para contar e exibir o total de clientes
   const totalClientes = clientes.reduce((total) => total + 1, 0);
   console.log(`Total de clientes cadastrados: ${totalClientes}`);
 
@@ -41,7 +39,6 @@ async function carregarClientes() {
 async function excluirCliente(id) {
   const clientes = await service.listarTodos();
 
-  // Usando find() para exibir qual cliente está sendo excluído
   const cliente = clientes.find(cli => cli._id === id);
   if (cliente) {
     console.log(`Excluindo cliente: ${cliente.nome} - ${cliente.email}`);
